@@ -1,0 +1,1431 @@
+lecture 4:
+// 5 steps to write to a file
+#include<iostream>;
+#include<fstream>; // step #1
+using namespace std;
+
+int main()
+{
+	int num1 = 3;
+	int num2 = 4;
+	int num3 = 5;
+
+	ofstream outFile; // step #2 - Declare a file object
+
+	outFile.open("c://data//numbers.txt"); //  dot operator . step #3 - Open the file
+
+	// step #4 - Write(/saved) to the file
+	outFile << num1 << endl << num2 << endl << num3 << endl;
+
+	outFile.close(); // step #5 - Close the file
+
+	cout << "The numbers have been written to a file. \n\n";
+
+	system("pause");
+	return 0;
+}
+// ON THE MID TERM/ FINAL
+=================================================================================
+#include<iostream>;
+#include<fstream>; // step #1
+using namespace std;
+
+int main()
+{
+	int num1 = 0;
+	int num2 = 0;
+	int num3 = 0;
+	ifstream infile; // step #2 - Declare a file object
+
+	infile.open("c:\\data\\numbers.txt"); // step #3
+
+	infile >> num1 >> num2 >> num3; // step #4
+
+	infile.close(); // step #5 - Close the file
+
+	cout << "Here are the numbers in the file.\n"
+		<< num1 << endl << num2 << endl << num3 << endl;
+
+	system("pause");
+	return 0;
+}
+/*
+Here are the numbers in the file.
+3
+4
+5
+Press any key to continue . . .
+*/
+=====================================================================================
+#include<iostream>;
+#include<fstream>; // step #1
+using namespace std;
+
+int main()
+{
+	int num1 = 0;
+	int num2 = 0;
+	int num3 = 0;
+	ofstream outfile; // step #2 - Declare a file object
+
+	outfile.open("q:\\data\\numbers.txt"); // step #3 - Open the file
+
+	// Check the fail state
+
+	if (outfile.fail())
+	{
+		cout << "Error! File did not open... now closing...\n\n";
+		system("pause");
+		exit(1); // closes the program
+
+	}
+
+	outfile << num1 << num2 << num3; // step #4 - Write to the file
+
+	outfile.close(); // step #5 - Close the file
+
+	cout << "Here are the numbers in the file.\n"
+		<< num1 << endl << num2 << endl << num3 << endl;
+
+	return 0;
+}
+======================================================================================
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+	int age;
+	string name;
+
+	cout << "Enter your age: " << endl;
+	cin >> age;
+
+	cin.ignore(); // moves the pointer so the enter key doesn't get in the way of getline (just one space)
+
+	cout << "Enter your name: " << endl;
+	// cin >> name; don't use cin >> with strings that have spaces
+	getline(cin, name);
+
+	
+
+	cout << name << " is " << age << " years old" << endl;
+
+	system("pause");
+	return 0;
+}
+/*OUTPUT
+Enter your age: 18
+Enter your name: Maggie Hillebrecht
+Maggie Hillebrecht is 18 years old
+Press any key to continue . . .
+*/
+=======================================================================================
+#include<iostream>
+#include<fstream>
+using namespace std;
+
+int main()
+{
+	char character = ' \0'; // just one letter, initialize the variable with null
+	int count = 0;
+
+	cout << "Enter the Gettysburg Address:\n";
+
+	while (character != '\n')
+	{
+		cin.get(character);
+
+		if (character == 'a' || character == 'A') //|| is the or operator (shift + \)
+		{
+			count = count + 1;
+		}
+		else if (character == 'e' || character =='E')
+		{
+			count = count + 1;
+		}
+		else if (character == 'i' || character == 'I')
+		{
+			count = count + 1;
+		}
+		else if (character == 'o' || character == 'O')
+		{
+			count = count + 1;
+		}
+		else if (character == 'u' || character == 'U')
+		{
+			count = count + 1;
+		}
+	}
+
+	cout << "The number of vowels counted: " << count << endl;
+
+	system("pause");
+	return 0;
+}
+/* output
+Enter the Gettysburg Address:
+Four scores and seven years ago
+The number of vowels counted: 11
+Press any key to continue . . .
+*/
+======================================================================================
+Lecture 5
+======================================================================================
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int number;
+
+	cout << "Enter a number: ";
+	cin >> number;
+
+	if (number < 0)
+	{
+		cout << "You entered a negative number.\n\n";
+	}
+	else if (number > 0)
+	{
+		cout << "You entered a positive number.\n\n";
+	}
+	else
+	{
+		cout << "You entered a zero.\n\n";
+	}
+	system("pause");
+	return 0;
+}
+==============================================================================
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	float testScore;
+
+	cout << "Enter your test score: ";
+	cin >> testScore;
+
+	// AND operator - &&
+	if (testScore >= 70 && testScore <= 100)
+	{
+		cout << "Credit\n\n";
+	}
+	else if (testScore < 70 && testScore >= 0)
+	{
+		cout << "No Credit\n\n";
+	}
+	else
+	{
+		cout << "Invalid entry... must be from 0 to 100.\n\n";
+	}
+
+	system("pause");
+	return 0;
+}
+==================================================================================
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	char selection;
+
+	cout << "A.) \tHamburger and fries.\n"
+		<< "B.)\tPizza and ice cream.\n"
+		<< "C.)\tVeggie burger and fruit.\n"
+		<< "Which one would you like? A, B, or C: ";
+
+	cin >> selection;
+
+	if (selection == 'A' || selection == 'a')
+	{
+		cout << "So you like to eat dead cows.\n\n";
+	}
+	else if (selection == 'B' || selection == 'b')
+	{
+		cout << "Good luck with that one. \n\n";
+	}
+	else if (selection == 'C' || selection == 'c')
+	{
+		cout << "Good responsible choice!\n\n";
+	}
+	else
+	{
+		cout << "Invalid entry. Must be A, B, or C";
+	}
+
+	system("pause");
+	return 0;
+}
+====================================================================================
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	char answer = 'Y';
+
+	while (answer == 'Y' || answer == 'y')
+	{
+		cout << "FAKE NEWS!\n\n";
+
+
+		cout << endl << endl;
+		system("pause");
+		system("cls");
+
+		cout << "Do you want to see it again? (Y or N)?  ";
+		cin >> answer;
+
+		if (answer != 'Y' && answer != 'y')
+		{
+			break;
+		}
+	}
+
+	system("pause");
+	return 0;
+}
+=============================================================================================
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int num1 = 5;
+	int num2 = 3;
+	int num3 = 7;
+
+	if (num1 > num2 && num2 > num3)
+	{
+		cout << num1 << " is the greatest value.\n\n";
+	}
+	else if (num2 > num1 && num1 > num3)
+	{
+		cout << num2 << " is greatest value,\n\n";
+	}
+	else
+	{
+		cout << num3 << " is the greatest value.\n\n";
+	}
+	system("pause");
+	return 0;
+}
+/*OUTPUT
+7 is the greatest value.
+
+Press any key to continue . . .*/
+===============================================================================================
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int number;
+
+	cout << "Enter a number: ";
+	cin >> number;
+
+	if (number % 2 == 0)
+	{
+		cout << number << " is even.\n\n";
+	}
+	else
+	{
+		cout << number << " is odd.\n\n";
+	}
+	system("pause");
+	return 0;
+}
+=====================================================================================================
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int number;
+	int divisor;
+
+	cout << "Enter a number: ";
+	cin >> number;
+	
+	cout << "Enter a divisor: ";
+	cin >> divisor;
+
+
+	if (number % divisor == 0)
+	{
+		cout << number << " is evenly divisible by " << divisor << " .\n\n";
+	}
+	else
+	{
+		cout << number << " is not evenly divisible by " << divisor << " .\n\n";
+	}
+	system("pause");
+	return 0;
+}
+/*
+Enter a number: 8
+Enter a divisor: 2
+8 is evenly divisible by 2 .
+
+Press any key to continue . . .*/
+====================================================================================================
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	char character;
+
+	cout << "Press any key: ";
+	cin.get(character);
+
+	if (character >= 'A' && character <= 'Z'||
+		character >= 'a' && character <= 'z')
+	{
+		cout << "You entered an alphabetic character. \n\n";
+	}
+	else
+	{
+		cout << "You did not enter an alphabetic character. \n\n";
+	}
+	system("pause");
+	return 0;
+}
+======================================================================================================
+#include<iostream>
+#include<cctype> // for toupper() funciton
+using namespace std;
+
+int main()
+{
+	char character;
+
+	cout << "Press any key: ";
+	cin.get(character);
+
+	if (toupper (character) >= 'a' && toupper (character <= 'z')) //toupper takes a capital letter and looks at the lower case
+	{
+		cout << "You entered an alphabetic character. \n\n";
+	}
+	else
+	{
+		cout << "You did not enter an alphabetic character. \n\n";
+	}
+	system("pause");
+	return 0;
+}
+========================================================================================================
+#include<iostream>
+#include<cctype> // for toupper() funciton
+using namespace std;
+
+int main()
+{
+	
+	char choice;
+
+	cout << "A.\tHamburger\n"
+		<< "B.\tVeggie Burger\n"
+		<< "Enter your choice:  ";
+	cin >> choice;
+
+	switch (toupper(choice))
+	{
+	case 'A': cout << "Hamburgers are great. \n\n";
+		break;
+	case 'B': cout << "Veggie burgers are the best. \n\n";
+		break;
+	default: cout << "Invalid entry, Must be A or B.\n\n";
+		break;
+	}
+
+
+	system("pause");
+	return 0;
+}
+/*A.      Hamburger
+B.      Veggie Burger
+Enter your choice:  a
+Hamburgers are great.
+
+Press any key to continue . . .
+*/
+====================================================================================================
+Lecture 6
+=======================================================================================================
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int count = 1;
+	
+	// count-controlled while loop on Mid Term
+	while (count <= 20)
+	{
+		cout << count << '\t';
+		count++;
+	}
+
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/*1       2       3       4       5       6       7       8       9       10      11      12      13      14      15      16      17      18      19      20
+
+Press any key to continue . . .
+*/
+=============================================================================================================
+FOR LOOP
+==========
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int upLimit;
+	int count = 0;
+
+	cout << "Enter an upper limit: ";
+	cin >> upLimit;
+	cout << "Here are the numbers from " << count << " to " << upLimit << endl;
+
+	for (int i = 0; i <= upLimit; i++)
+	{
+		
+		cout << i << '\t';
+	}
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/*
+Enter an upper limit: 25
+Here are the numbers from 0 to 25
+0       1       2       3       4       5       6       7       8       9       10      11      12      13      14      15      16      17      18      19      20      21      22      23      24      25
+
+Press any key to continue . . .
+*/
+=============================================================================
+WHILE LOOP
+============
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int upLimit;
+	int count = 0;
+
+	cout << "Enter an upper limit: ";
+	cin >> upLimit;
+	cout << "Here are the numbers from " << count << " to " << upLimit << endl;
+
+	while (count <= upLimit)
+	{
+		cout << count << '\t';
+		count++;
+	}
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/*
+Enter an upper limit: 25
+Here are the numbers from 0 to 25
+0       1       2       3       4       5       6       7       8       9       10      11      12      13      14      15      16      17      18      19      20      21      22      23      24      25
+
+Press any key to continue . . .
+*/
+=================================================================================
+DO WHILE LOOP
+====================
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int upLimit;
+	int count = 0;
+
+	cout << "Enter an upper limit: ";
+	cin >> upLimit;
+	cout << "Here are the numbers from " << count << " to " << upLimit << endl;
+
+	do
+	{
+		cout << count << '\t';
+		count++;
+	} while (count <= upLimit);
+
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/*
+Enter an upper limit: 25
+Here are the numbers from 0 to 25
+0       1       2       3       4       5       6       7       8       9       10      11      12      13      14      15      16      17      18      19      20      21      22      23      24      25
+
+Press any key to continue . . .
+*/
+==========================================================================================
+FOR LOOP: output even numbers
+===================
+#include<iostream>
+using namespace std;
+
+int main() 
+{
+	cout << "Here are all the even numbers from 0 to 20:\n\n";
+
+	for (int i = 0; i <= 20; i++)
+	{
+		if (i % 2 == 0)
+		{
+			cout << i << '\t';
+		}
+	}
+
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/*
+Here are all the even numbers from 0 to 20:
+
+0       2       4       6       8       10      12      14      16      18      20
+
+Press any key to continue . . .
+*/
+==========================================================================================
+FOR WHILE LOOP: output odd number divisable by 17
+============================================
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	cout << "Here are all the odd numbers from 0 to 200:\n\n";
+
+	for (int i = 0; i <= 200; i++)
+	{
+		if (i % 17 == 0)
+		{
+			cout << i << '\t';
+		}
+	}
+
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/*
+Here are all the odd numbers from 0 to 200:
+
+0       17      34      51      68      85      102     119     136     153     170     187
+
+Press any key to continue . . .
+*/
+==========================================================================================
+WHILE LOOP: making the alphabet uppercase
+===================================
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	char character = 'A';
+
+	cout << "Here are all alphabetic characters in uppercase: ";
+
+	while (character <= 'Z')
+	{
+		cout << character << '\t';
+		character++;
+	}
+	cout << endl << endl;
+
+	system("pause");
+	return 0;
+}
+/*
+Here are all alphabetic characters in uppercase: A      B       C       D       E       F       G       H       I       J       K       L       M       N       O       P       Q       R       S       T       U       V       W       X       Y       Z
+
+Press any key to continue . . .
+*/
+===========================================================================================
+DO WHILE LOOP
+#include<iostream>
+#include<cctype>
+using namespace std;
+
+int main()
+{
+	char key;
+	char answer;
+
+	
+
+	do
+	{
+		cout << "Press any key: ";
+		cin >> key;
+
+		if (key <= 'Z' && key >= 'A')
+		{
+			cout << key << " is an uppercase alphabetic character.\n\n";
+		}
+		
+		else if (key <= 'z' && key >= 'a')
+		{
+			cout << key << " is a lowercase alphabetic character. \n\n";
+		}
+		else
+		{
+			cout << key << " is not an alphabetic character. \n\n";
+		}
+		cout << "Do you want to enter another key in? (Y or N)";
+		cin >> answer;
+	} while (toupper(answer) == 'Y');
+
+
+	cout << endl << endl;
+
+	system("pause");
+	return 0;
+}
+======================================================
+SWITCH
+================================================
+#include<iostream>
+#include<cmath>
+#include<cctype>
+using namespace std;
+
+int main()
+{
+	float number;
+	char choice;
+
+	cout << "Enter a number: ";
+	cin >> number;
+
+	cout << "A. Display the square of " << number << endl
+		<< "B. Display the square root of " << number << endl
+		<< "Enter your choice: ";
+
+	cin >> choice;
+
+	switch (toupper(choice))
+	{
+	case 'A': cout << number << " squared equals " << pow(number, 2) << endl;
+		break;
+	case 'B': cout << "The square root of " << number << " equals " << sqrt(number) << endl;
+		break;
+	default: cout << "Invaid number.";
+		break;
+	}
+
+
+	system("pause");
+	return 0;
+ }
+/*
+nter a number: 4
+A. Display the square of 4
+B. Display the square root of 4
+Enter your choice: b
+The square root of 4 equals 2
+Press any key to continue . . .
+*/
+===============================================================
+Lecture 7
+==============================================================
+#include<iostream>
+using namespace std;
+
+// 3 parts to a function
+//#1 - Function prototypes above main()
+
+int getAge();
+void showAge(int age);
+
+int main()
+{
+	
+	int age;
+
+	//#2 Function calls inside main()
+	age = getAge();
+	showAge(age);
+	
+
+	system("pause");
+	return 0;
+ }
+//===============
+// #3 complete funtion definitions after main()
+int getAge()
+{
+	int age;
+
+	cout << "Enter your age: ";
+	cin >> age;
+
+	return age;
+}
+//===============
+void showAge(int age)
+{
+	cout << "You are " << age << " years old.\n\n";
+}
+/*
+Enter your age: 18
+You are 18 years old.
+
+Press any key to continue . . .
+*/
+===========================================================================
+FUNCTION PROTOTYPES
+=============================
+#include<iostream>
+#include<cctype>
+using namespace std;
+
+void showMenu();
+char getChoice();
+void showResult(char Choice);
+
+int main()
+{
+	char choice;
+
+	showMenu();
+	choice = getChoice();
+	showResult(choice);
+
+
+	system("pause");
+	return 0;
+ }
+//=========================
+void showMenu()
+{
+	cout << "A. \tParis" << endl
+		<< "B. \tLondon" << endl
+		<< "C. \tVenice" << endl;
+}
+//=========================
+char getChoice()
+{
+	char Choice;
+
+	cout << "While do you want to visit? (A, B, or C)" << endl;
+	cin >> Choice;
+
+	return Choice;
+}
+//=========================
+void showResult(char Choice)
+{
+	switch (toupper(Choice))
+	{
+	case 'A': cout << "Paris is okay.\n\n";
+		break;	
+	case 'B': cout << "London is amazing.\n\n";
+		break;
+	case 'C': cout << "Oh so you are a Lana fan?\n\n";
+		break;
+	default: cout << "Invalid";
+		break;
+	}
+}
+/*
+A.      Paris
+B.      London
+C.      Venice
+While do you want to visit? (A, B, or C)
+C
+Oh so you are a Lana fan?
+
+Press any key to continue . . .
+*/
+===============================
+SINGLE ARRAY IN A FN
+===============================
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+const int SIZE = 5;
+float calcAvg (float scores[], const int SIZE); //putting the constant in the fn makes the value carry its value
+
+int main()
+{
+
+    float scores[SIZE] = {95.0, 88.5, 67.0, 91.0, 81.0};
+    float average = 0;
+    
+    average = calcAvg(scores, SIZE);
+    
+    cout << "The average is " << fixed << setprecision(2) << average << ".\t";
+    
+    return 0;
+}
+float calcAvg (float scores[], const int SIZE)
+{
+    float average;
+    float sum = 0;
+    
+    for (int i = 0; i < SIZE; i++) {
+        sum += scores[i]; //sum gets the average
+    }
+    average = sum / float (SIZE); // typecast to make them both be a float (better coding style)
+    return average;
+}
+//OUTPUT
+//The average is 84.50.
+==================================
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+
+int main()
+{
+    int nums[5] = {1, 2, 3, 4, 5};
+   
+    cout << nums << endl;
+    
+    return 0;
+}
+
+/*
+ OUTPUT
+ 0x7ffeefbff480
+ Program ended with exit code: 0
+ */
+===================================
+TWO DIMENSIONAL ARRAYS
+===================================
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+void showNumbers(int numbers[][3]); //knows the rows already through the main fn but not the colums
+
+int main()
+{
+    int numbers[2][3] = { 1,2,3,4,5,6}; // [2 rows] [3 colums]
+    
+    showNumbers(numbers);
+    
+    return 0;
+}
+
+void showNumbers(int numbers[][3])
+{
+    cout << "Here are the array values:\n";
+    //nested for-loop
+    for (int i = 0; i < 2; i++) //specifys the row
+    {
+        for (int j = 0; j < 3; j++)//specifys the colum
+        {
+            cout << numbers[i][j] << '\t';
+            /*
+                [0][1][2] row
+             [0] 1  2  3
+             [1] 4  5  6
+             colum
+             */
+        }
+        cout << endl;
+    }
+}
+/*
+ Here are the array values:
+ 1    2    3
+ 4    5    6
+ Program ended with exit code: 0
+ */
+===================================
+ADDING ARRAYS
+===================================
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int addNumbers(int numbers[][3]);
+
+int main()
+{
+    int total;
+    int numbers[2][3] = { 1,2,3,4,5,6 }; // [2 rows] [3 colums]
+    
+    total = addNumbers(numbers);
+    
+    cout << "The total equals " << total << endl;
+    
+    return 0;
+}
+
+int addNumbers(int numbers[][3])
+{
+    int total = 0; //equal to 0 because it puts a value in the equation
+    //nested for-loop
+    for (int row = 0; row < 2; row++) //specifys the row
+    {
+        for (int colum = 0; colum < 3; colum++)//specifys the colum
+        {
+            //total = total + number[row][colum];
+            total += numbers[row][colum];
+        }
+    }
+    return total;
+}
+/*
+ The total equals 21
+ Program ended with exit code: 0
+ */
+==================================
+ADDING ROWS
+==================================
+#include <iostream>
+using namespace std;
+
+void showRows(int numbers[][3]);
+
+int main()
+{
+    int numbers[2][3] = {1,2,3,4,5,6};
+    
+    showRows(numbers);
+    
+    
+    
+    return 0;
+}
+void showRows(int numbers[][3])
+{
+    int rowTotal = 0;
+    
+    for (int i = 0; i < 2; i++)
+    {
+        rowTotal = 0;
+        
+        for (int j = 0; j < 3; j++)
+        {
+            rowTotal += numbers[i][j];
+        }
+        cout << "Rows # " << i + 1 << ": " << rowTotal << endl;
+    }
+}
+/*
+ Rows # 1: 6
+ Rows # 2: 15
+ Program ended with exit code: 0
+ */
+==================================
+#include <iostream>
+#include<string>
+using namespace std;
+
+
+int main()
+{
+    /*
+     
+    string firstName = "Tom";
+    string lastName;
+    string full;
+    
+    lastName = "Lee";
+    
+    //concatenation operator (+); concaterates strings
+    full = firstName + " " + lastName;
+    
+    cout <<"Hi " << full << ".\t" << endl;
+     */
+    //---------------------
+    // c_string - A null terminated character array
+    
+    char first[10] = "Tom";
+    char last[10];
+    char fullName[10];
+    
+   // last = "Lee"; *Have to assign in the Variable or it won't work
+    strcpy(last, "Lee");
+    
+    //fullName = first + "" + last; can't do it
+    
+    //string concatenation
+    strcat(fullName, first); //fullName = "Tom"
+    
+    strcat(fullName, " " ); // fullName = "Tom "
+    
+    strcat(fullName, last); //fullName = "Tom Lee"
+    
+    cout << "Hi " << fullName << ".\n";
+    return 0;
+}
+/*
+ Hi Tom Lee.
+ Program ended with exit code: 0
+ */
+======================================
+C_STRING
+======================
+#include <iostream>
+#include<string>
+using namespace std;
+
+
+int main()
+{
+    string name;
+    int age;
+    
+    cout << "Enter your age: ";
+          cin >> age;
+    cout << "Enter your name: ";
+    //cin >> name; use get,line(cin, name);
+    cin.ignore(); //Ignores the space
+    getline(cin, name); //will read spaces
+    
+    cout << "Hi " << name << " you are " << age << " years old.\n";
+    
+   
+    
+    
+    return 0;
+}
+/*
+ Enter your age: 18
+ Enter your name: Maggie
+ Hi Maggie you are 18 years old.
+ Program ended with exit code: 0
+ */
+======================================
+LECTURE 3
+======================================
+POINTERS
+=========================
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number = 10;
+    int *ptr = &number; // can not hold a number but an address of another variable; holds a 32 bit address
+    //& = Address of
+    
+   // *ptr = 20; // by adding a value it just makes number = *ptr
+    //cout << number;
+    
+    cout << *ptr << endl; //this is dereferencing the pointers by putting *ptr again
+    //outputs int number value
+    
+    return 0;
+}
+==========================
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number = 10;
+    int *ptr = &number; // can not hold a number but an address of another variable; holds a 32 bit address
+    int *temp;
+    
+    temp = ptr; // more than one pointer pointing to the same variable
+    cout << temp << endl << ptr << endl;
+    
+   // char *charPtr = ptr; //create an error cause it needs to be the same data type(var)
+    
+    return 0;
+}
+===========================
+#include <iostream>
+using namespace std;
+
+
+int main() {
+    char name[10] = "Tom";
+    char *ptr = name; //can't use an & when getting an address of an array; can't pass by value
+    
+    cout << ptr << endl;
+    return 0;
+}
+============================
+#include <iostream>
+using namespace std;
+
+void showName(char name[]);
+
+int main() {
+    char name[10] = "Tom";
+    char *ptr = name; //can't use an & when getting an address of an array; can't pass by value
+    
+    cout << *ptr << endl; //Just puts out a T cause its the first address
+    cout << ptr << endl;
+    
+    //showName(name);
+    showName(ptr); //works cause ptr = name but bad coding style
+    
+    return 0;
+}
+void showName(char *ptr)
+{
+    cout << ptr << endl << endl;
+}
+/*
+ T
+ Tom
+ Tom
+
+ Program ended with exit code: 0
+ */
+============================
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+    int numbers[5] = { 1,2,3,4,5 };
+    int *ptr = numbers;
+    int *temp = ptr;
+        
+    
+    for (int i = 0; i < 5; i++)
+    {
+        cout << *temp << endl;
+        //or *ptr + 1
+        //or number[i]
+        temp++; // pointer arithmetic
+    }
+    
+    
+    return 0;
+}
+
+/*
+ 1
+ 2
+ 3
+ 4
+ 5
+ Program ended with exit code: 0
+ */
+=================
+MAIN FILE
+#include "Book.h" //can also do <Book.h>
+using namespace std;
+
+
+int main()
+{
+    Book b1; //can create variables through the struct
+    Book b2;
+    
+    cout << "Book #1 is " << sizeof(b1) << " bytes.\n\n"; //no matter if it is b1 or b2 you will still get the same amount of bytes
+    
+    return 0;
+}
+
+/* OUT PUT
+ Book #1 is 28 bytes.
+
+ Program ended with exit code: 0
+ */
+**************BOOK.H FILE***************
+//Book.h
+//struct specification (blueprint)
+
+#ifndef Book_h
+#define Book_h
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+struct Book //good coding style to capitalize the name and the file name, struct is a class
+{
+    int isbn;
+    char title[20];
+    float price;
+};
+
+#endif /* Book_h */
+==============================
+USING STRUCT IN A FUNCTION STILL USING BOOK.H ABOVE
+============================
+#include "Book.h" //can also do <Book.h>
+using namespace std;
+
+void getBook(Book & book);
+void showBook(Book & book);
+
+int main()
+{
+    Book b1 = {12345, "Ulysses", 9.99}; //can create variables through the struct
+    Book b2;
+    
+
+    cout << "Enter Book #2: \n";
+    getBook(b2);
+    
+    cout << endl;
+    
+    cout << "Book #1:\n";
+    showBook(b1);
+    
+    cout << endl;
+    
+    cout << "Book #2:\n";
+    showBook(b2);
+
+    
+    return 0;
+}
+void getBook(Book & book)
+{
+    cout << "ISBN: ";
+    cin >> book.isbn;
+    cin.ignore(); // have to have the ignore to ignore the space
+    cout << "Title: ";
+    getline(cin, book.title);
+    cout << "Price: ";
+    cin >> book.price;
+}
+void showBook(Book & book)
+{
+    cout << "ISBN: " << book.isbn << endl
+    << "Title: " << book.title << endl
+    << "Price: " << book.price << endl << endl; //no matter if it is b1 or b2 you will still get the same amount of bytes
+    
+    
+}
+
+/* OUT PUT
+ Enter Book #2:
+ ISBN: 2342
+ Title: UR mom
+ Price: 88
+
+ Book #1:
+ ISBN: 12345
+ Title: Ulysses
+ Price: 9.99
+
+ Book #2:
+ ISBN: 2342
+ Title: UR mom
+ Price: 88
+
+ Program ended with exit code: 0
+ */
+================================
+#include "Date.h" //can also do <Date.h>
+
+void showDate(Date & date);
+
+int main()
+{
+    Date today = {3, 9, 2020};
+    
+    cout << "Today's date is ";
+    showDate(today);
+    return 0;
+}
+void showDate(Date & date)
+{
+    cout << date.month << "/" << date.day << "/" << date.year << "\n";
+}
+
+
+/* OUT PUT
+ Today's date is 3/9/2020
+ Program ended with exit code: 0
+ */
+***********Date.h************
+#ifndef Date_h
+#define Date_h
+#include <iostream>
+using namespace std;
+
+struct Date
+{
+    int month;
+    int day;
+    int year;
+};
+
+
+#endif /* Date_h */
+=================================
+**********USING DATE.H FILE*****************
+
+#include "Date.h" //can also do <Date.h>
+
+void showDate(Date & date);
+void getDate(Date & date);
+
+int main()
+{
+    Date today = {3, 9, 2020};
+    Date payDay;
+    
+    cout << "Today's date is ";
+    showDate(today);
+    cout << "\n\nEnter the date for pay day:\n";
+    getDate(payDay);
+
+    if (today.month == payDay.month &&
+        today.day == payDay.day &&
+        today.year == payDay.year) {
+        cout << "You are getting paid today!!!" << endl;
+    }
+    else
+    {
+        cout << "Today is not pay day :(" << endl;
+    }
+    return 0;
+}
+void showDate(Date & date)
+{
+    cout << date.month << "/" << date.day << "/" << date.year << "\n";
+    
+}
+void getDate(Date & date)
+{
+    cout << "Month: ";
+    cin >> date.month;
+    
+    cout << "Day: ";
+    cin >> date.day;
+    
+    cout << "Year: ";
+    cin >> date.year;
+}
+
+
+/* OUT PUT
+Today's date is 3/9/2020
+
+
+ Enter the date for pay day:
+ Month: 3
+ Day: 12
+ Year: 2020
+ Today is not pay day :(
+ Program ended with exit code: 0
+ */
+==============================
+

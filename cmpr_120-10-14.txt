@@ -1,0 +1,359 @@
+
+
+// =======================
+// 3 kinds of loops - while,    do-while,   and   for loop
+// =======================
+// while loop
+// =======================
+// #include <iostream>
+using namespace std;
+
+int main()
+{
+	int count = 1;
+
+	// count-controlled while loop
+	while (count <= 20)
+	{
+		cout << count << '\t';
+		count++;
+	}
+
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+1       2       3       4       5       6       7       8       9       10       11      12      13      14      15      16      17      18      19       20
+
+Press any key to continue . . .*/
+// =======================
+
+
+
+// =======================
+// do - while loop  (same program as above)
+// =======================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int count = 1;
+
+	// count-controlled while loop
+	do {
+		cout << count << '\t';
+		count++;
+	} while (count <= 10);
+
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+1       2       3       4       5       6       7       8       9       10
+
+Press any key to continue . . .*/
+// =======================
+
+
+
+
+// =======================
+// for loop - Same program as above.
+// =======================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	for (int count = 1; count <= 10; count++)
+	{
+		cout << count << '\t';
+	}
+
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+1       2       3       4       5       6       7       8       9       10
+
+Press any key to continue . . .*/
+// =======================
+
+
+
+
+// =======================
+// while loop to output all numbers 
+//   from 10 to 1.  Use the decrement operator
+// =======================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int count = 10;
+
+	while (count > 0)
+	{
+		cout << count << '\t';
+		count--;
+	}
+
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+10      9       8       7       6       5       4       3       2       1
+
+Press any key to continue . . .*/
+// =======================
+
+
+
+
+// =======================
+// Use a for loop to output all numbers 
+//    from 10 to 1.
+// =======================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	for (int i = 10; i >= 1; i--)
+	{
+		cout << i << '\t';
+	}
+
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+10      9       8       7       6       5       4       3       2       1
+
+Press any key to continue . . .*/
+// =======================
+
+
+
+
+// =======================
+// Use the += operator to increment by 5
+// =======================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int number = 0;
+
+	while (number <= 100)
+	{
+		cout << number << '\t';
+		number += 5;		// number = number + 5;
+	}
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+5       10      15      20      25      30      35      40      45      50       55      60      65      70      75      80      85      90      95       100
+
+Press any key to continue . . .*/
+// =======================
+
+
+
+
+// =======================
+// Same as above, except using an if with
+//    the % operator
+// =======================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int number = 1;
+
+	while (number <= 100)
+	{
+		if (number % 5 == 0)
+		{
+			cout << number << '\t';
+		}
+		number++;
+	}
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+5       10      15      20      25      30      35      40      45      50       55      60      65      70      75      80      85      90      95       100
+
+Press any key to continue . . .*/
+// =======================
+
+
+
+
+// =======================
+// sentinel-controlled do while loop
+// =======================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	char answer;
+
+	do {
+		cout << "Elvis is alive!!!\n\n";
+
+		cout << "Do you want to see this message again (Y or N)?  ";
+		cin >> answer;
+		
+		system("cls");
+	} while (toupper(answer) == 'Y');
+
+	system("pause");
+	return 0;
+}
+// =======================
+
+
+
+
+// =======================
+// while loop,  += operator   typecast
+// =======================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	const int LIMIT = 10;
+	int sum = 0;
+	int number;
+	int count = 1;
+
+	cout << "Enter " << LIMIT << " numbers\n";
+
+	while (count <= LIMIT)
+	{
+		cout << "Enter a number:  ";
+		cin >> number;
+
+		sum += number;	// sum = sum + number;
+		count++;
+	}
+	cout << "Sum = " << sum << ".\n\n";
+	cout << "Average = " << float(sum) / float(LIMIT) << ".\n\n";
+
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+Enter 10 numbers
+Enter a number:  1
+Enter a number:  2
+Enter a number:  3
+Enter a number:  4
+Enter a number:  5
+Enter a number:  6
+Enter a number:  7
+Enter a number:  8
+Enter a number:  9
+Enter a number:  44
+Sum = 89.
+
+Average = 8.9.
+
+Press any key to continue . . .
+*/
+
+// =======================
+
+
+
+
+// =======================
+// while (!inFile.eof()
+// =======================
+#include <iostream>
+#include <fstream>	// Step #1
+using namespace std;
+
+int main()
+{
+	int number;
+	ifstream inFile;	// Step #2 - Declare a file object
+
+	inFile.open("numbers.txt");	// Step #3 - Open the file
+
+	// Check the fail state
+	if (inFile.fail())
+	{
+		cout << "File did not open...now closing.\n\n";
+		exit(1);
+	}
+
+	while (!inFile.eof())
+	{
+		inFile >> number;	// Step #4 - Read the file
+		cout << number << endl;
+	}
+	inFile.close();	// Step #5 - Close the file.
+
+	system("pause");
+	return 0;
+}
+// =======================
+
+
+
+// =======================
+// 
+// =======================
+
+// =======================
+
+
+
+// =======================
+// 
+// =======================
+
+// =======================
+
+
+
+
+// =======================
+// 
+// =======================
+
+// =======================
+
+
+
+// =======================
+// 
+// =======================
+
+// =======================
+
+
+
+
+// =======================
+// 
+// =======================
+
+// =======================

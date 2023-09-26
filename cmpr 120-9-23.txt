@@ -1,0 +1,283 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	char letter = 'A';
+	bool result = true;
+	short int num1 = 44;
+	int num2 = 22;
+	long int num3 = 444;
+	long long int num4 = 2222;
+	float num5 = 5.5;
+	double num6 = 12.12345;
+	string name = "Tom";
+
+	cout << "char:  " << sizeof(char) << " byte\n"
+		<< "bool:  " << sizeof(bool) << " byte\n"
+		<< "short:  " << sizeof(short) << " bytes\n"
+		<< "int:  " << sizeof(int) << " bytes\n"
+		<< "long:  " << sizeof(long) << " bytes\n"
+		<< "long long:  " << sizeof(long long) << " bytes\n"
+		<< "float:  " << sizeof(float) << " bytes\n"
+		<< "double:  " << sizeof(double) << " bytes\n" 
+		<< "string:  " << sizeof(string) << " bytes\n\n";
+
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+char:  1 byte
+bool:  1 byte
+short:  2 bytes
+int:  4 bytes
+long:  4 bytes
+long long:  8 bytes
+float:  4 bytes
+double:  8 bytes
+string:  28 bytes
+
+Press any key to continue . . .*/
+// ====================================
+
+
+
+// ====================================
+// Division operator /  and  modulus operator %
+// ====================================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int num1 = 5;
+	int num2 = 2;
+	double num3 = 5.0;
+	double num4 = 2.0;
+
+	cout << num1 << " / " << num2 << " = " << num1 / num2 
+		<< " with a remainder of " << num1 % num2 << endl << endl;
+	
+	// ----------- 
+
+	cout << num3 << " / " << num4 << " = " << num3 / num4
+		<< endl << endl;
+
+	// cout << num3 % num4 << endl;  // modulus op. does not work with float or double
+
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+5 / 2 = 2 with a remainder of 1
+
+5 / 2 = 2.5
+
+Press any key to continue . . .*/
+// ====================================
+
+
+
+
+// ====================================
+// Using fixed and setprecision() function
+// The setprecision() function requires <iomanip>
+// ====================================
+#include <iostream>
+#include <iomanip>		// for setprecision() function
+using namespace std;
+
+int main()
+{
+	double num2 = 9.;
+
+	cout << fixed << setprecision(2);
+
+	cout << "double:  " << num2 << endl << endl;
+
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+double:  9.00
+
+Press any key to continue . . .*/
+// ====================================
+
+
+
+// ====================================
+// coercion vs. typecast
+// ====================================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	float num1 = 5.0;
+	int num2 = 2;
+	float result = 0.0;
+	
+	// num2 is coerced by the compiler to float
+	result = num1 / num2;	
+	cout << num1 << " / " << num2 << " = " << result << "\n\n";
+	  
+	// coercion is bad coding style.
+	// Typecast the above expression to explicitly change
+	//   num2 to a float
+	// first way to typecast
+	result = num1 / float(num2);	// Typecast num2 to a float
+	
+	// second way to typecast
+	result = num1 / static_cast<float>(num2);
+
+	cout << "Using typecasting:\n"
+		<< num1 << " / " << num2 << " = " << result << "\n\n";
+
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+5 / 2 = 2.5
+
+Using typecasting:
+5 / 2 = 2.5
+
+Press any key to continue . . .*/
+// ====================================
+
+
+
+
+// ====================================
+// 4 <cmath> functions
+// ====================================
+
+#include <iostream>
+#include <cmath>	// for abs(), fabs(), pow() and sqrt() functions
+using namespace std;
+
+int main()
+{
+	int number = -3;
+	double base = 2;
+	double exp = 3;
+	double value = -3.5;
+	double amount = 3.0;
+	double root;
+	int answer;
+	double result;
+
+	// function call - The abs() function returns the absolute value
+	//                     of an integer.
+	answer = abs(number);
+	cout << "The absolute value of " << number << " = " << answer << endl;
+	   
+	result = fabs(value);
+	cout << "The absolute value of " << value << " = " << result << endl;
+
+	root = sqrt(amount);
+	cout << "The square root of " << amount << " = " << root << endl;
+
+	result = pow(base, exp);	// pow() function has two arguments
+	cout << base << " raised to a power of " << exp << " = " << result
+		<< endl << endl;
+
+	system("pause");
+	return 0;
+}
+
+/* OUTPUT
+The absolute value of -3 = 3
+The absolute value of -3.5 = 3.5
+The square root of 3 = 1.73205
+2 raised to a power of 3 = 8
+
+Press any key to continue . . .*/
+// ====================================
+
+
+
+
+
+// ====================================
+// Use setw() and setprecision() functions to format output
+// ====================================
+#include <iostream>
+#include <iomanip>		//setprecision() and setw() function
+using namespace std;
+
+int main()
+{
+	float firstQtr = 11234.55;
+	float secondQtr = 333.22;
+	float thirdQtr = 123456.22;
+
+	cout << fixed << setprecision(2);
+
+	cout << setw(17) << "First Quarter:  " << setw(12) << firstQtr << endl
+		<< setw(17) << "Second Quarter:  " << setw(12) << secondQtr << endl
+		<< setw(17) << "Third Quarter:  " << setw(12) << thirdQtr << endl << endl;
+
+	system("pause");
+	return 0;
+}
+
+/* OUTPUT
+ First Quarter:      11234.55
+Second Quarter:        333.22
+ Third Quarter:     123456.22
+
+Press any key to continue . . .*/
+// ====================================
+
+
+
+
+
+// ====================================
+// 
+// ====================================
+
+// ====================================
+
+
+
+
+
+// ====================================
+// 
+// ====================================
+
+// ====================================
+
+
+
+
+
+// ====================================
+// 
+// ====================================
+
+// ====================================
+
+
+
+
+
+// ====================================
+// 
+// ====================================
+
+// ====================================
+
+
+
+
+
+
+
+
+
+

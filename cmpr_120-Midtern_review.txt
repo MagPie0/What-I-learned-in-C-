@@ -1,0 +1,411 @@
+	// ========================
+// Review:  for loop
+// ========================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int limit;
+
+	cout << "Enter an upper limit:  ";
+	cin >> limit;
+
+	cout << "Here are all numbers from 0 to " << limit << ".\n\n";
+	for (int i = 0; i <= limit; i++)
+	{
+		cout << i << '\t';
+	}
+	cout << endl << endl;
+
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+Enter an upper limit:  22
+Here are all numbers from 0 to 22.
+
+0       1       2       3       4       5       6       7       8       9 
+10      11      12      13      14      15      16      17      18      19
+20      21      22
+
+Press any key to continue . . .*/
+// ========================
+
+
+// ========================
+// Use a while loop to output all numbers
+//   from 0 to the limit
+// ========================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int limit;
+	int number = 0;
+
+	cout << "Enter an upper limit:  ";
+	cin >> limit;
+
+	cout << "Here are all numbers from 0 to " << limit << ".\n\n";
+	
+	while (number <= limit)
+	{
+		cout << number << '\t';
+		++number;
+	}
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+// ========================
+
+
+// ========================
+// Same as previous 2 programs, except
+//   using a do-while loop
+// ========================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int limit;
+	int number = 0;
+
+	cout << "Enter an upper limit:  ";
+	cin >> limit;
+
+	cout << "Here are all numbers from 0 to " << limit << ".\n\n";
+	
+	do {
+		cout << number << '\t';
+		++number;
+
+	} while (number <= limit);
+
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+// ========================
+
+
+// ========================
+// Use a for loop to output all odd 
+//   numbers from 0 to 20
+// ========================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	cout << "Here are all even numbers from 0 to 20:\n\n";
+
+	for (int i = 0; i <= 20; i++)
+	{
+		if (i % 2 == 0)
+		{
+			cout << i << '\t';
+		}
+	}
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+Here are all even numbers from 0 to 20:
+
+0       2       4       6       8       10      12      14      16      18       20
+
+Press any key to continue . . .*/
+// ========================
+
+
+
+
+// ========================
+// for loop
+// ========================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	cout << "Here are all numbers from 0 to 200\n"
+		<< "evenly divisible by 17:\n\n";
+
+	for (int i = 0; i <= 200; i++)
+	{
+		if (i % 17 == 0)
+		{
+			cout << i << '\t';
+		}
+	}
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+Here are all numbers from 0 to 200
+evenly divisible by 17:
+
+0       17      34      51      68      85      102     119     136     153      170     187
+
+Press any key to continue . . .*/
+// ========================
+
+
+
+
+// ========================
+// Use a while loop to output all
+//   uppercase characters
+// ========================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	char character = 'A';
+
+	cout << "Here is the alphabet in uppercase:\n\n";
+	while (character <= 'Z')
+	{
+		cout << character << '\t';
+		character++;
+	}
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+Here is the alphabet in uppercase:
+
+A       B       C       D       E       F       G       H       I       J        K      
+ L       M       N       O       P       Q       R       S        T       U       V       W       
+X       Y       Z
+
+]
+Press any key to continue . . .*/
+// ========================
+
+
+
+
+// ========================
+// Use a do-while loop to run a program repeatedly
+// ========================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	char answer;
+	char character;
+
+	do {
+		cout << "Press any key:  ";
+		//cin.get(character);
+		cin >> character;
+
+		if (character >= 'A' && character <= 'Z')
+		{
+			cout << character << " is an uppercase character.\n\n";
+		}
+		else if (character >= 'a' && character <= 'z')
+		{
+			cout << character << " is an lowercase character.\n\n";
+		}
+		else
+		{
+			cout << character << " is not an alphabetic character.\n\n";
+		}
+		cout << "Do it again (Y or N)?  ";
+		cin >> answer;
+	} while (toupper(answer) == 'Y');
+
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+Press any key:  e
+e is an lowercase character.
+
+Do it again (Y or N)?   y
+Press any key:  T
+T is an uppercase character.
+
+Do it again (Y or N)?  y
+Press any key:  6
+6 is not an alphabetic character.
+
+Do it again (Y or N)?  n
+Press any key to continue . . .*/
+// ========================
+
+
+// ========================
+// 5 steps to read a file
+// ========================
+#include <iostream>
+#include <fstream>		// Step #1
+using namespace std;
+
+int main()
+{
+	int number;
+	ifstream inFile;			// Step #2 - Declare a file object
+
+	inFile.open("numbers.txt");	// Step #3 - Open the file.
+
+	// Check the fail state
+	if (inFile.fail())
+	{
+		cout << "Error.  File did not open.  Now closing...\n\n";
+		exit(1);
+	}
+	cout << "Here are the numbers in the file:\n\n";
+	while (!inFile.eof())
+	{
+		inFile >> number;	// Step #4 - Read the file
+		cout << number << endl;
+	}
+	inFile.close();		// Step #5 - Close the file	
+
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+Here are the numbers in the file:
+
+22
+345
+6
+43
+2
+77
+6543
+234
+56
+8
+54577
+2
+777
+
+Press any key to continue . . .*/
+// ========================
+
+
+
+
+// ========================
+// Write a switch control structure
+//   to determine which function is called
+// ========================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	float number;
+	char choice;
+
+	cout << "Enter a number:  ";
+	cin >> number;
+
+	cout << "A.\tDisplay the square of " << number << endl
+		<< "B.\tDisplay the square root of " << number
+		<< "\n\nEnter your choice (A or B):  ";
+	cin >> choice;
+	
+	switch (toupper(choice))
+	{
+	case 'A': cout << number << " squared equals " << pow(number, 2) 
+		<< ".\n\n";
+		break;
+	case 'B': cout << "The square root of " << number
+		<< " equals " << sqrt(number) << ".\n\n";
+		break;
+	default: cout << "Invalid entry.  Must be A or B.\n\n";
+	}
+	system("pause");
+	return 0;
+}
+/* OUTPUT
+Enter a number:  4
+A.      Display the square of 4
+B.      Display the square root of 4
+
+Enter your choice (A or B):  a
+4 squared equals 16.
+
+Press any key to continue . . .*/
+// ========================
+
+
+
+
+// ========================
+// 
+// ========================
+
+// ========================
+
+
+
+
+// ========================
+// 
+// ========================
+
+// ========================
+
+
+
+
+// ========================
+// 
+// ========================
+
+// ========================
+
+
+
+
+// ========================
+// 
+// ========================
+
+// ========================
+
+
+
+
+
+
+
+// ========================
+// 
+// ========================
+
+// ========================
+
+
+
+
+// ========================
+// 
+// ========================
+
+// ========================
+
+
+
+
+
+
+
+
